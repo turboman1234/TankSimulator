@@ -527,7 +527,7 @@ void LCDTask(void)
     sprintf(Row1, "Fl. level:%7f,cm", TankValues.currentFluidLevel * 100);
     sprintf(Row2, "Fout: %8f, m3/s", TankValues.outputFlow);
     sprintf(Row3, "Fin: %9f, m3/s", TankValues.currentControlVoltage * PUMP_COEF);
-    sprintf(Row4, "Ctrl volt: %6f, V", TankValues.currentControlVoltage);
+    sprintf(Row4, "Ctrl volt: %7f,V", TankValues.currentControlVoltage);
     
     LCDhome();
     
