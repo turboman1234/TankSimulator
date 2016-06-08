@@ -317,7 +317,8 @@
           <state>$PROJ_DIR$/MyTimers</state>
           <state>$PROJ_DIR$/RS232</state>
           <state>$PROJ_DIR$/ModBusSlave</state>
-          <state>$PROJ_DIR$/ModBusMaster</state>
+          <state>$PROJ_DIR$/Simulator</state>
+          <state>$PROJ_DIR$/Display</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1931,6 +1932,15 @@
     </file>
   </group>
   <group>
+    <name>Display</name>
+    <file>
+      <name>$PROJ_DIR$\Display\LCD.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Display\LCD.h</name>
+    </file>
+  </group>
+  <group>
     <name>ModBusSlave</name>
     <file>
       <name>$PROJ_DIR$\ModBusSlave\mbcrc.c</name>
@@ -2027,6 +2037,15 @@
     </file>
   </group>
   <group>
+    <name>TankSimulator</name>
+    <file>
+      <name>$PROJ_DIR$\Simulator\tankSimulator.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Simulator\tankSimulator.h</name>
+    </file>
+  </group>
+  <group>
     <name>USART</name>
     <file>
       <name>$PROJ_DIR$\USART\usart.c</name>
@@ -2055,6 +2074,9 @@
   </group>
   <file>
     <name>$PROJ_DIR$\main.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\..\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\startup_stm32f40xx.s</name>
   </file>
   <file>
     <name>$PROJ_DIR$\stm32f4xx_conf.h</name>
