@@ -14,7 +14,7 @@
 #define LED_10_CM                               LED_5
 #define ALARM_LED                               LED_8
 #define SAMPLE_TIMER                            TIMER_1
-
+#define LCD_REFRESH_TIMER                       TIMER_2
 
 //Tank parameters --------------------------------------------------------------
 
@@ -27,7 +27,7 @@
 #define F_IN_MAX                                PUMP_COEF * U_MAX                                       // m^3/s
 #define F_OUT_MAX                               F_IN_MAX / 2.0                                          // m^3/s
 #define S_OUT                                   F_OUT_MAX / sqrt(2 * GRAVITY_CONSTANT * H_MAX)          // m^2
-#define SAMPLE_TIME                             T_1_MS                                                  // miliseconds - dicretization time
+#define SAMPLE_TIME                             T_10_MS / 10                                            // miliseconds - dicretization time
 
 #define A                                       -(S_OUT * sqrt(2 * GRAVITY_CONSTANT)) / S_TANK          // model constant
 #define B                                       PUMP_COEF / S_TANK                                      // model constant
