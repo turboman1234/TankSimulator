@@ -8,7 +8,7 @@
 Tank TankValues;
 
 
-void InitPeripheral(void)
+void InitTankPeripheral(void)
 {
     InitADC(PUMP_CONTROL_VOLTAGE);
     InitDAC(FLUID_LEVEL, 0);

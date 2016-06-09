@@ -58,4 +58,12 @@ typedef struct TankStructure{
 }Tank;
 
 
+void InitTankPeripheral(void);
+void InitInitialCondition(void);
+void ReadControlSignal(void);
+void CalculateTankLevel(void);
+void SetFluidLevelAndOutputFlowValuesToOutput(void);
+void SetLEDLevelIndicator(void);
+void TankSimulatorTask(void);
+
 #endif
