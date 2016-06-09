@@ -11,15 +11,25 @@
 #include "serial.h"
 #include "mbslave.h"
 #include "rs232.h"
+#include "LCD.h"
+#include "tankSimulator.h"
 
 
 int main()
 {
     // Init peripheral
+    InitRCC();
+    InitVTimers();
+    InitTankPeripheral();
+    
+    InitInitialCondition();
+    InitLCD();
     
     while(1)
     {
         //do whatever you do here
+        TankSimulatorTask();
+        LCDTask();
     }
     
     return 0;
