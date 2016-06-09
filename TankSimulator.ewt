@@ -180,6 +180,12 @@
     </file>
   </group>
   <group>
+    <name>CMSIS</name>
+    <file>
+      <name>$PROJ_DIR$\..\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\startup_stm32f40xx.s</name>
+    </file>
+  </group>
+  <group>
     <name>DAC</name>
     <file>
       <name>$PROJ_DIR$\DAC\dac.c</name>
@@ -263,6 +269,12 @@
   <group>
     <name>STDPeriph</name>
     <file>
+      <name>$PROJ_DIR$\..\Libraries\STM32F4xx_StdPeriph_Driver\src\misc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_adc.c</name>
     </file>
     <file>
@@ -343,9 +355,6 @@
   </group>
   <file>
     <name>$PROJ_DIR$\main.c</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\..\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\startup_stm32f40xx.s</name>
   </file>
   <file>
     <name>$PROJ_DIR$\stm32f4xx_conf.h</name>
