@@ -42,10 +42,10 @@
 
 //------------------------------------------------------------------------------
 
-#define MIN_DAC_VALUE                           96
+#define MIN_DAC_VALUE                           95
 #define MAX_DAC_VALUE                           4095
 #define FLUID_LEVEL_TO_DAC_CODE                 4000.0 / (H_MAX + 0.0001)                               // H_MAX + 0.0001 ----> 0.1001 is the max fluid level which DAC could transmit
-#define OUTPUT_FLOW_TO_DAC_CODE                 4000.0 / (F_OUT_MAX * 1.0005)                           // (F_OUT_MAX * 1.0005) ----> max flow by h = 0.1001, m
+#define OUTPUT_FLOW_TO_DAC_CODE                 4000.0 / (F_OUT_MAX * 1.0005)                           // (F_OUT_MAX * 1.0005) ----> ~max flow by h = 0.1001, m
 #define ADC_CODE_TO_VOLTAGE_CONSTANT            U_MAX / 4000.0                                          // first 95 adc codes will not be used because it is possible adc noice 
 
 

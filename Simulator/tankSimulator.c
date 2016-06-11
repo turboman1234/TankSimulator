@@ -46,8 +46,8 @@ void ReadControlSignal(void)
     
     adcCode = GetAnalogInput(PUMP_CONTROL_VOLTAGE);
     
-    // normalize adcCode in range 0-3999
-    if(adcCode < MIN_DAC_VALUE)                            // adc code in range 0 - 96 may be produced by noise and that is why it is not good to use it
+    // normalize adcCode in range 95-4095
+    if(adcCode < MIN_DAC_VALUE)                            // adc code in range 0 - 94 may be produced by noise and that is why it is not good to use it
     {
         adcCode = 0;
     }
