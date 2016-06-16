@@ -524,10 +524,10 @@ void LCDTask(void)
 {
     char Buffer[81]; // (4 * row lenght) + 1 (for '\0')
     
-    sprintf(Row1, "Fl. level:%7f,cm", TankValues.currentFluidLevel * 100);
-    sprintf(Row2, "Fout: %8f, m3/s", TankValues.outputFlow);
-    sprintf(Row3, "Fin: %9f, m3/s", TankValues.currentControlVoltage * PUMP_COEF);
-    sprintf(Row4, "Ctrl volt: %7f,V", TankValues.currentControlVoltage);
+    sprintf(Row1, "Flow level: %2.2f, cm", TankValues.currentFluidLevel * 100);
+    sprintf(Row2, "Fin:     %2.2f, cm3/s", TankValues.currentControlVoltage * PUMP_COEF * 1000000);
+    sprintf(Row3, "Fout:    %2.2f, cm3/s", TankValues.outputFlow * 1000000);
+    sprintf(Row4, "Ctrl volt:   %1.2f, V", TankValues.currentControlVoltage);
     
     LCDhome();
     
