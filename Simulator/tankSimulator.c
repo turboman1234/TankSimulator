@@ -47,13 +47,13 @@ void ReadControlSignal(void)
     adcCode = GetAnalogInput(PUMP_CONTROL_VOLTAGE);
     
     // normalize adcCode in range 95-4095
-    if(adcCode < MIN_DAC_VALUE)                            // adc code in range 0 - 94 may be produced by noise and that is why it is not good to use it
+    if(adcCode < MIN_ADC_VALUE)                            // adc code in range 0 - 94 may be produced by noise and that is why it is not good to use it
     {
         adcCode = 0;
     }
     else
     {
-        adcCode = adcCode - MIN_DAC_VALUE;
+        adcCode = adcCode - MIN_ADC_VALUE;
     }
     
     // actualize u(k-1)
@@ -65,11 +65,20 @@ void ReadControlSignal(void)
 
 void CalculateTankLevel(void)
 {
+    TankValues.oldFluidLevel = TankValues.currentFluidLevel;
+    
+    
     // h(k) = h(k-1) - T0*A*sqrt(h(k-1)) + T0*B*u(k-1) - discretized equation
     TankValues.currentFluidLevel = TankValues.oldFluidLevel - (T0 * A * sqrt(TankValues.oldFluidLevel)) + B * T0 * TankValues.oldControlVoltage;
     
     // F_out(k) = So * sqrt(2 * g * h(k))
     TankValues.outputFlow = S_OUT * sqrt(2 * GRAVITY_CONSTANT * TankValues.currentFluidLevel);
+    
+    // level is decresing and become less then down sensor level
+    if(TankValues.currentFluidLevel < TankValues.oldFluidLevel && TankValues.currentFluidLevel < FLUID_LEVEL_LOW_BORDER)
+    {
+        TankValues.currentFluidLevel = 0.0;
+    }
 }
 
 void SetFluidLevelAndOutputFlowValuesToOutput(void)

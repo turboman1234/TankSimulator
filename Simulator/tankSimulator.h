@@ -29,10 +29,11 @@
 #define S_OUT                                   F_OUT_MAX / sqrt(2 * GRAVITY_CONSTANT * H_MAX)          // m^2
 #define SAMPLE_TIME                             T_10_MS / 10                                            // miliseconds - dicretization time
 
-#define A                                       -(S_OUT * sqrt(2 * GRAVITY_CONSTANT)) / S_TANK          // model constant
+#define A                                       (S_OUT * sqrt(2 * GRAVITY_CONSTANT)) / S_TANK          // model constant
 #define B                                       PUMP_COEF / S_TANK                                      // model constant
 #define T0                                      0.001                                                   // seconds 
 
+#define FLUID_LEVEL_LOW_BORDER                  0.0001                                                 //m
 #define TANK_LEVEL_0_CM                         0.0                                                
 #define TANK_LEVEL_2_CM                         0.02
 #define TANK_LEVEL_4_CM                         0.04
@@ -43,10 +44,12 @@
 //------------------------------------------------------------------------------
 
 #define MIN_DAC_VALUE                           95
-#define MAX_DAC_VALUE                           4095
-#define FLUID_LEVEL_TO_DAC_CODE                 4000.0 / (H_MAX + 0.0001)                               // H_MAX + 0.0001 ----> 0.1001 is the max fluid level which DAC could transmit
-#define OUTPUT_FLOW_TO_DAC_CODE                 4000.0 / (F_OUT_MAX * 1.0005)                           // (F_OUT_MAX * 1.0005) ----> ~max flow by h = 0.1001, m
-#define ADC_CODE_TO_VOLTAGE_CONSTANT            U_MAX / 4000.0                                          // first 95 adc codes will not be used because it is possible adc noice 
+#define MAX_DAC_VALUE                           4055
+#define MIN_ADC_VALUE                           95
+#define MAX_ADC_VALUE                           4055
+#define FLUID_LEVEL_TO_DAC_CODE                 (float)(MAX_DAC_VALUE - MIN_DAC_VALUE) / (H_MAX + 0.0001)                               // H_MAX + 0.0001 ----> 0.1001 is the max fluid level which DAC could transmit
+#define OUTPUT_FLOW_TO_DAC_CODE                 (float)(MAX_ADC_VALUE - MIN_ADC_VALUE) / (F_OUT_MAX * 1.0005)                           // (F_OUT_MAX * 1.0005) ----> ~max flow by h = 0.1001, m
+#define ADC_CODE_TO_VOLTAGE_CONSTANT            U_MAX / (MAX_ADC_VALUE - MIN_ADC_VALUE)                                          // first 95 adc codes will not be used because it is possible adc noice 
 
 
 typedef struct TankStructure{
