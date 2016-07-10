@@ -109,8 +109,8 @@ int main()
     while(1)
     {
         //do whatever you do here
-        TankSimulatorTask();
-        LCDTask();
+        //TankSimulatorTask();
+        SimulatorDisplayDataTask();
     }
     
     return 0;
