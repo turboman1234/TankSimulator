@@ -127,6 +127,7 @@
 #define MIN_ANALOG_VALUE_8b     0
 #define MAX_ANALOG_VALUE_8b     255
 
+#define T_1_MS          1
 #define T_10_MS		10
 #define T_100_MS	100
 #define T_500_MS        500
