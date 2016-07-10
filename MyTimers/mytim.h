@@ -16,4 +16,6 @@ void RS232TimerEnable(unsigned short miliseconds);
 void RS232TimerDisable(void);
 void TIM4_IRQHandler(void);
 
+void InitTIM5(int sampleTime);
+
 #endif
