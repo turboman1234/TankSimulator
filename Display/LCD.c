@@ -14,13 +14,10 @@ LiquidCristal.cpp
 
 
 extern RCC_ClocksTypeDef MYCLOCKS;
-extern Tank TankValues;
 
 size_t LCDwrite(uint8_t);
 void LCDcommand(uint8_t);
 
-//Row arrays for more friendly writting
-char Row1[ROW_LENGHT], Row2[ROW_LENGHT], Row3[ROW_LENGHT], Row4[ROW_LENGHT];
 
 /*
 STM32F4_DISCOVERY_LOW_LEVEL Exported_Types
@@ -100,6 +97,10 @@ init(1, rs, rw, enable, d0, d1, d2, d3, 0, 0, 0, 0);
 void InitLCD(void)
 {
     char Buffer [81];
+    char Row1[ROW_LENGHT];
+    char Row2[ROW_LENGHT];
+    char Row3[ROW_LENGHT];
+    char Row4[ROW_LENGHT];
     
     LCDSet(RS,Enb,B0,B1,B2,B3);
     LCDnoDisplay();
@@ -122,7 +123,7 @@ void InitLCD(void)
     
     delayMicroseconds(500000); // enought time for init message reading 
     
-    SetVTimerValue(LCD_REFRESH_TIMER, T_500_MS);
+    SetVTimerValue(LCD_REFRESH_TIMER, T_100_MS);
 }
 
 void LCDSet(LCD_TypeDef rs,  LCD_TypeDef enable, LCD_TypeDef d0, LCD_TypeDef d1, LCD_TypeDef d2, LCD_TypeDef d3)
@@ -518,27 +519,6 @@ uint16_t LCDStrWrite(const uint8_t *buffer, uint16_t size)
 }
 
 
-
-
-void LCDTask(void)
-{
-    char Buffer[81]; // (4 * row lenght) + 1 (for '\0')
-    
-    sprintf(Row1, "Flow level: %2.2f, cm", TankValues.currentFluidLevel * 100);
-    sprintf(Row2, "Fin:     %2.2f, cm3/s", TankValues.currentControlVoltage * PUMP_COEF * 1000000);
-    sprintf(Row3, "Fout:    %2.2f, cm3/s", TankValues.outputFlow * 1000000);
-    sprintf(Row4, "Ctrl volt:   %1.2f, V", TankValues.currentControlVoltage);
-    
-    LCDhome();
-    
-    strcpy(Buffer, Row1);
-    strcat(Buffer, Row3);
-    strcat(Buffer, Row2);
-    strcat(Buffer, Row4);
-    Buffer[80] = '\0';
-    
-    LCDprint(Buffer);
-}
 
 uint16_t LCDprint(char* s)
 {
